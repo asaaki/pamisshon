@@ -7,6 +7,8 @@ require "active_support/concern"
 
 require "pamisshon/patches"
 require "pamisshon/errors"
+require "pamisshon/config"
+require "pamisshon/helper"
 require "pamisshon/connection"
 require "pamisshon/permission"
 

@@ -85,7 +85,7 @@ describe Pamisshon::Permission do
     
     it "sets deny permission" do
       pm = Pamisshon::Permission.new
-      pm.deny(User, :write, Page).should == ["user/__ALL__/write/page/__ALL__","0"]
+      pm.deny(User, :write, Page).should == ["user/##ALL##/write/page/##ALL##","0"]
     end
         
   end

@@ -1,9 +1,8 @@
 # encoding: utf-8
 
 module Pamisshon  
-
-  # redis namespace with pamisshon defaults
   class Connection < ::Redis::Namespace
+  
     def initialize(namespace=nil, options = {})
       ns = namespace ? namespace : :pamisshon
       
@@ -26,6 +25,5 @@ module Pamisshon
     end
     
   end
-
 end
 
