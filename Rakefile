@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "pamisshon"
   gem.homepage = "http://github.com/asaaki/pamisshon"
   gem.license = "MIT"
-  gem.summary = %Q{pāmisshon | permission handling with redis}
-  gem.description = %Q{pāmisshon is a gem for easy permission handling in apps.}
+  gem.summary = %Q{pāmisshon (パーミッション) | permission handling with redis}
+  gem.description = %Q{pāmisshon (パーミッション) is a gem for easy permission handling in apps.}
   gem.email = "chris@dinarrr.com"
   gem.authors = ["Christoph Grabo"]
   # dependencies defined in Gemfile
@@ -31,19 +31,18 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
+#--- Pamisshon specific tasks
+
+task :environment do
+  ENV['PAMISSHON_ENV'] ||= 'development' unless ENV['RAILS_ENV'] || ENV['PADRINO_ENV']
 end
 
-task :default => :spec
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "pamisshon #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+desc "Open an irb session preloaded with this library"
+task :irb => :environment do
+  sh "bundle exec irb -I lib -r pamisshon.rb"
 end
+
+#--- default
+
+task :default => [:environment, :spec]
+
