@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-require 'rubygems'
-require 'bundler'
+require "rubygems"
+require "bundler"
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -9,9 +9,9 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'rake'
+require "rake"
 
-require 'jeweler'
+require "jeweler"
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "pamisshon"
@@ -25,16 +25,19 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-require 'rspec/core'
-require 'rspec/core/rake_task'
+require "rspec/core"
+require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
+  spec.pattern = FileList["spec/**/*_spec.rb"]
 end
 
 #--- Pamisshon specific tasks
 
 task :environment do
-  ENV['PAMISSHON_ENV'] ||= 'development' unless ENV['RAILS_ENV'] || ENV['PADRINO_ENV']
+  ENV["PAMISSHON_ENV"] ||= "development" unless ENV["RAILS_ENV"] || ENV["PADRINO_ENV"]
+end
+task :spec_environment do
+  ENV["PAMISSHON_ENV"] = "spec"
 end
 
 desc "Open an irb session preloaded with this library"
@@ -44,5 +47,5 @@ end
 
 #--- default
 
-task :default => [:environment, :spec]
+task :default => [:spec_environment, :spec]
 

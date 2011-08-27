@@ -2,8 +2,11 @@
 
 require "redis"
 require "redis/namespace"
+require "active_support/core_ext"
 require "active_support/concern"
 
+require "pamisshon/patches"
+require "pamisshon/errors"
 require "pamisshon/connection"
 require "pamisshon/permission"
 

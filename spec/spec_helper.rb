@@ -1,15 +1,16 @@
 # encoding: utf-8
-
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
+here = File.dirname(__FILE__)
+$LOAD_PATH.unshift(File.join(here, '..', 'lib'))
+$LOAD_PATH.unshift(here)
 
 require 'rspec'
 require 'pamisshon'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+Dir["#{here}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-  
+
 end
+

@@ -16,6 +16,15 @@ module Pamisshon
       options = options[:redis] ? { :redis => options[:redis] } : { :redis => ::Redis.new(:db=>15) }
       super(ns, options)
     end
+    
+    def flush_keys
+      self.keys.each do |k|
+        self.del k
+      end
+      return true if self.keys.count==0
+      false
+    end
+    
   end
 
 end
