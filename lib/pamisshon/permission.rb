@@ -3,6 +3,7 @@
 module Pamisshon
   class Permission
     include Pamisshon::Helper
+    include Pamisshon::Index
       
     attr_accessor :conn
   

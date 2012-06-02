@@ -10,6 +10,7 @@ require "pamisshon/errors"
 require "pamisshon/config"
 require "pamisshon/helper"
 require "pamisshon/connection"
+require "pamisshon/index"
 require "pamisshon/permission"
 
 module Pamisshon
