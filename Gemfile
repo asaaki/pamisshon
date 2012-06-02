@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "redis" #, "~> 2.2.2"
+gem "redis", "~> 3.0.1"
 gem "redis-namespace", "~> 1.2.0"
 gem "activesupport", "~> 3.2.5"
 gem "i18n"
